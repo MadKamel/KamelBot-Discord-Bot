@@ -6,13 +6,7 @@ intents = discord.Intents.all()
 token = os.getenv('token')
 client = discord.Client(intents=intents)
 
-
-# Emotional states
-#   p0: happiness
-#   p1: ?
-#   p2: ?
-
-ctx = [0, 0, 0]
+ctx = None
 
 
 
