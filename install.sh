@@ -1,4 +1,3 @@
 pip install discord.py
-pip install smtplib
-pip install chatbotAI
+pip install chatterbot-corpus
 python3 main.py
