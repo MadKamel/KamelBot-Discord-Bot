@@ -8,7 +8,7 @@ client = discord.Client(intents=intents)
 
 
 # Emotional states
-#   p0: ?
+#   p0: happiness
 #   p1: ?
 #   p2: ?
 
