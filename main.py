@@ -1,14 +1,18 @@
 # ( ͡° ͜ʖ ͡°)
-import discord, os, chat, chatterbot
+import discord, os, chat
+
 
 intents = discord.Intents.all()
 token = os.getenv('token')
 client = discord.Client(intents=intents)
 
-chatbot = chatterbot.ChatBot('Export Example Bot')
-chatbot.trainer.export_for_training('./export.yml')
 
-ctx = None
+# Emotional states
+#   p0: ?
+#   p1: ?
+#   p2: ?
+
+ctx = [0, 0, 0]
 
 
 
