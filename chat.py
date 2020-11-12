@@ -17,10 +17,10 @@ async def respond(msg, data, ctx):
 
   if punc in setin:
     out = setout[setin.index(punc)]
-    await msg.channel.send(out)
-    print(out)
-
   else:
     open("zzz.imp", "+a").write(punc)
 
+
+  await msg.channel.send(out)
+  print(out)
   return ctx_new
