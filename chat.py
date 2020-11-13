@@ -1,4 +1,4 @@
-import string, random
+import string, random, natlang
 
 auto = False
 training = True
@@ -53,8 +53,12 @@ async def respond(msg, data, ctx, client):
       out = 'Oh, I thought that made sense in my head, sorry!'
 
   else:
-    if auto and training:
-      open("zzz.imp", "+a").write(punc + '\n')
+
+    if auto:
+      out = natlang.parse(split)
+    # regular expressions instead.
+    #if auto and training:
+    #  open("zzz.imp", "+a").write(punc + '\n')
     
     else:
       out = input('(' + msg.author.name + ')\n' + punc + "\n\n >")
