@@ -2,6 +2,7 @@ import string, random, natlang
 
 auto = True
 training = False
+ctx_training = True
 debug = False
 
 async def respond(msg, data, ctx, client):
@@ -67,6 +68,8 @@ async def respond(msg, data, ctx, client):
           if not out == '#':
             open("set.in", "+a").write(punc + '\n')
             open("set.out", "+a").write(out + '\n')
+          if ctx_training:
+            open("set.ctx", "+a").write(ctx[0] + '\n')
 
 
   await msg.channel.send(out)
