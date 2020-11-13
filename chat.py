@@ -55,10 +55,7 @@ async def respond(msg, data, ctx, client):
   else:
 
     if auto:
-      out = natlang.parse(split)
-    # regular expressions instead.
-    #if auto and training:
-    #  open("zzz.imp", "+a").write(punc + '\n')
+      out = natlang.parse(punc)
     
     else:
       out = input('(' + msg.author.name + ')\n' + punc + "\n\n >")
