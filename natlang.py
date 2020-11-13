@@ -47,7 +47,7 @@ def parse(msg):
         break
 
   if worker != 0:
-    if worker_type = 1:
+    if worker_type == 1:
       return decide.decide(working_noun, working_attr, worker)
   else:
     return msg_translated
