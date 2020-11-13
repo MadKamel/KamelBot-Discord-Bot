@@ -1,16 +1,8 @@
-import decide
-
 def parse(msg):
-  worker = 0
-  worker_type = 0
-  working_noun = ''
-  working_attr = ''
-
+  worker = ''
   msg_split = msg.split(' ')
   
-  question_patterns = open('vocab/questions.grm').read().split('\n')
-
-  declaration_patterns = open('vocab/declarations.grm').read().split('\n')
+  patterns = open('vocab/patterns.grm').read().split('\n')
 
   noun = open('vocab/noun.voc').read().split('\n')
 
@@ -31,23 +23,10 @@ def parse(msg):
   
   msg_translated = ' '.join(msg_translated)
   
-  for i in range(len(question_patterns)):
-    if question_patterns[i] == msg_translated:
-      worker_type = 1
-      if i == 0 or i == 1:
-        worker = 1
-        working_noun = msg_split[1]
-        working_attr = msg_split[2]
-        break
+  for i in range(len(patterns)):
+    if patterns[i] == msg_translated:
+      # this pattern will apply.
+      worker = patterns[i]
+      print(worker)
 
-      elif i == 2:
-        worker = 2
-        working_noun = msg_split[1]
-        working_attr = msg_split[2]
-        break
-
-  if worker != 0:
-    if worker_type == 1:
-      return decide.decide(working_noun, working_attr, worker)
-  else:
-    return msg_translated
+  return msg_translated, worker
