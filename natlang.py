@@ -1,8 +1,13 @@
+import decide
+
 def parse(msg):
-  worker = ''
+  worker = 0
+  working_noun = ''
+  working_attr = ''
+
   msg_split = msg.split(' ')
   
-  patterns = open('vocab/patterns.grm').read().split('\n')
+  question_patterns = open('vocab/questions.grm').read().split('\n')
 
   noun = open('vocab/noun.voc').read().split('\n')
 
@@ -23,10 +28,15 @@ def parse(msg):
   
   msg_translated = ' '.join(msg_translated)
   
-  for i in range(len(patterns)):
-    if patterns[i] == msg_translated:
-      # this pattern will apply.
-      worker = patterns[i]
-      print(worker)
+  for i in range(len(question_patterns)):
+    if question_patterns[i] == msg_translated:
+      worker = 1
+      working_noun = msg_split[1]
+      working_attr = msg_split[2]
+      break
 
-  return msg_translated, worker
+
+  if worker != 0:
+    return decide.decide(working_noun, working_attr, worker)
+  else:
+    return msg_translated
