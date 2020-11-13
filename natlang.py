@@ -1,5 +1,3 @@
-import re
-
 def parse(msg):
   worker = ''
   msg_split = msg.split(' ')
