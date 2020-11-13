@@ -30,10 +30,16 @@ def parse(msg):
   
   for i in range(len(question_patterns)):
     if question_patterns[i] == msg_translated:
-      worker = 1
-      working_noun = msg_split[1]
-      working_attr = msg_split[2]
-      break
+      if i == 0 or i == 1:
+        worker = 1
+        working_noun = msg_split[1]
+        working_attr = msg_split[2]
+        break
+
+      elif i == 2:
+        worker = 2
+        working_noun = msg_split[1]
+        working_attr = msg_split[2]
 
 
   if worker != 0:
