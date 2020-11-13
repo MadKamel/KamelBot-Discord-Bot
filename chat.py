@@ -2,7 +2,7 @@ import string, random, natlang
 
 auto = True
 training = False
-ctx_training = True
+ctx_training = False
 debug = False
 
 async def respond(msg, data, ctx, client):
@@ -37,9 +37,10 @@ async def respond(msg, data, ctx, client):
   if (punc in setin) and auto:
     prob = []
     for i in range(len(setin)):
-      if setin[i] == punc and (needed_ctx[i] == ctx[0] or needed_ctx == '*'):
+      if setin[i] == punc and (needed_ctx[i] == ctx[0] or needed_ctx[i] == '*'):
         prob.append(i)
-    out = setout[random.choice(prob)]
+    if len(setout) != 0:
+      out = setout[random.choice(prob)]
     #out = setout[setin.index(punc)]
 
     if out == '*':
@@ -70,6 +71,8 @@ async def respond(msg, data, ctx, client):
             open("set.out", "+a").write(out + '\n')
           if ctx_training:
             open("set.ctx", "+a").write(ctx[0] + '\n')
+          else:
+            open("set.ctx", "+a").write('*\n')
 
 
   await msg.channel.send(out)
