@@ -6,6 +6,8 @@ def parse(msg):
 
   noun = open('vocab/noun.voc').read().split('\n')
 
+  nouns = open('vocab/nouns.voc').read().split('\n')
+
   adjective = open('vocab/adjective.voc').read().split('\n')
 
   verb = open('vocab/verb.voc').read().split('\n')
@@ -14,6 +16,8 @@ def parse(msg):
   for i in range(len(msg_split)):
     if msg_split[i] in noun:
       msg_translated.append("'noun'")
+    elif msg_split[i] in nouns:
+      msg_translated.append("'nouns'")
     elif msg_split[i] in adjective:
       msg_translated.append("'adjective'")
     elif msg_split[i] in verb:
