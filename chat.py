@@ -30,10 +30,13 @@ async def respond(msg, data, ctx, client):
   topics = open("set.tpc").read().split('\n')
   if auto and debug: print(topics)
 
+  needed_ctx = open("set.ctx").read().split('\n')
+  if auto and debug: print(needed_ctx)
+
   if (punc in setin) and auto:
     prob = []
     for i in range(len(setin)):
-      if setin[i] == punc:
+      if setin[i] == punc and (needed_ctx[i] == ctx[0] or needed_ctx == '*'):
         prob.append(i)
     out = setout[random.choice(prob)]
     #out = setout[setin.index(punc)]
