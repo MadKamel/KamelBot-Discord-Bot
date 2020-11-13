@@ -1,7 +1,7 @@
 import string, random, natlang
 
-auto = False
-training = True
+auto = True
+training = False
 debug = False
 
 async def respond(msg, data, ctx, client):
