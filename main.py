@@ -42,8 +42,6 @@ def ircDaemonRoutine():
 
 ircDaemon = threading.Thread(target=ircDaemonRoutine, daemon=True)
 ircDaemon.start()
-ircDaemon.run()
-ircDaemon.join()
 
 
 print('KamelBot going online.')
