@@ -40,6 +40,11 @@ def ircDaemonRoutine():
       elif cmd == 'pong':
         print('pong from ' + user + ' recieved.')
     
+
+def ircDaemonRoutine2():
+  global ircclient
+  global channel
+  while True:
     int_cmd = open('irc.syn').read()
     if not int_cmd == 'nul':
       if int_cmd == 'ping':
@@ -51,6 +56,9 @@ def ircDaemonRoutine():
 
 ircDaemon = threading.Thread(target=ircDaemonRoutine, daemon=True)
 ircDaemon.start()
+
+ircDaemon2 = threading.Thread(target=ircDaemonRoutine2, daemon=True)
+ircDaemon2.start()
 
 
 print('KamelBot going online.')
