@@ -22,6 +22,8 @@ async def on_message(msg):
   global ctx
   if msg.content[:22] == '<@!' + str(client.user.id) + '>':
     ctx = await chat.respond(msg, msg.content[23:], ctx, client)
+  elif msg.content[0] == '$':
+    open('irc.syn', 'w').write(msg.content[1:])
     
 
 
@@ -37,6 +39,13 @@ def ircDaemonRoutine():
 
       elif cmd == 'pong':
         print('pong from ' + user + ' recieved.')
+    
+    int_cmd = open('irc.syn').read()
+    if not int_cmd == 'nul':
+      if int_cmd == 'ping':
+        ircclient.send(channel, 'ping')
+      open('irc.syn', 'w').write('nul')
+          
 
 
 
