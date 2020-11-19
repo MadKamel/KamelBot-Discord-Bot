@@ -21,15 +21,6 @@ client = discord.Client(intents=intents)
 
 ctx = ['', '']
 
-@client.event
-async def on_ready():
-  homechannel = client.get_channel(772960791674355762)
-  while True:
-    send_msg_todiscord = open('dis.syn').read()
-    if not send_msg_todiscord == 'nul':
-      print(send_msg_todiscord)
-      await homechannel.send(open('dis.syn').read())
-      open('dis.syn', 'w').write('nul')
 
 
 @client.event
@@ -44,6 +35,7 @@ async def on_message(msg):
 
 
 def ircDaemonRoutine():
+  print('irc daemon 1 running')
   global ircclient
   global channel
   global nickname
@@ -64,6 +56,7 @@ def ircDaemonRoutine():
     
 
 def ircDaemonRoutine2():
+  print('irc daemon 2 running')
   global ircclient
   global channel
   while True:
@@ -74,12 +67,27 @@ def ircDaemonRoutine2():
       open('irc.syn', 'w').write('nul')
 
 
+async def disDaemonRoutine():
+  print('discord daemon running')
+  global client
+  homechannel = client.get_channel(772960791674355762)
+  while True:
+    send_msg_todiscord = open('dis.syn').read()
+    if not send_msg_todiscord == 'nul':
+      print(send_msg_todiscord)
+      yield homechannel.send(open('dis.syn').read())
+      open('dis.syn', 'w').write('nul')
+
+
 
 ircDaemon = threading.Thread(target=ircDaemonRoutine, daemon=True)
 ircDaemon.start()
 
 ircDaemon2 = threading.Thread(target=ircDaemonRoutine2, daemon=True)
 ircDaemon2.start()
+
+disDaemon = threading.Thread(target=disDaemonRoutine, daemon=True)
+disDaemon.start()
 
 
 print('KamelBot going online.')
