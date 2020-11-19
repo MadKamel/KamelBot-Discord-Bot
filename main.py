@@ -21,7 +21,7 @@ client = discord.Client(intents=intents)
 
 ctx = ['', '']
 
-@client.even
+@client.event
 async def on_ready():
   homechannel = client.get_channel(772960791674355762)
   while True:
@@ -87,8 +87,6 @@ ircDaemon.start()
 ircDaemon2 = threading.Thread(target=ircDaemonRoutine2, daemon=True)
 ircDaemon2.start()
 
-disDaemon = threading.Thread(target=disDaemonRoutine, daemon=True)
-disDaemon.start()
 
 
 print('KamelBot going online.')
