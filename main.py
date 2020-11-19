@@ -49,13 +49,12 @@ async def on_message(msg):
 def ircDaemonRoutine():
   print('irc daemon 1 running')
   global ircclient
-  global channel
   global nickname
   while True:
     cmd, user, fullmsg = comms.parsecmd(ircclient.get_text())
     if not cmd == None:
       if cmd == 'ping':
-        ircclient.send(channel, 'pong')
+        ircclient.send('pong')
         print('ping from ' + user + ' ponged.')
 
       elif cmd == 'pong':
@@ -70,12 +69,11 @@ def ircDaemonRoutine():
 def ircDaemonRoutine2():
   print('irc daemon 2 running')
   global ircclient
-  global channel
   while True:
     int_cmd = open('irc.syn').read()
     if not int_cmd == 'nul':
       print(int_cmd)
-      ircclient.send(channel, int_cmd)
+      ircclient.send(int_cmd)
       open('irc.syn', 'w').write('nul')
 
 
