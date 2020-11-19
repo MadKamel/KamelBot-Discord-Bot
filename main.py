@@ -34,11 +34,10 @@ async def on_ready():
 @client.event
 async def on_message(msg):
   global ctx
-  if msg.content == '':
-    pass
-  elif msg.content[:22] == '<@!' + str(client.user.id) + '>':
+  if msg.content[:22] == '<@!' + str(client.user.id) + '>':
     ctx = await chat.respond(msg, msg.content[23:], ctx, client)
   elif msg.content[0] == '$':
+    print(msg.content)
     open('irc.syn', 'w').write(msg.content[1:])
     
 
@@ -69,6 +68,7 @@ def ircDaemonRoutine2():
   while True:
     int_cmd = open('irc.syn').read()
     if not int_cmd == 'nul':
+      print(int_cmd)
       ircclient.send(channel, int_cmd)
       open('irc.syn', 'w').write('nul')
 
