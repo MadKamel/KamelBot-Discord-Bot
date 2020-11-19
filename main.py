@@ -21,6 +21,16 @@ client = discord.Client(intents=intents)
 
 ctx = ['', '']
 
+@client.even
+async def on_ready():
+  homechannel = client.get_channel(772960791674355762)
+  while True:
+    send_msg_todiscord = open('dis.syn').read()
+    if not send_msg_todiscord == 'nul':
+      print(send_msg_todiscord)
+      await homechannel.send(open('dis.syn').read())
+      open('dis.syn', 'w').write('nul')
+
 
 
 @client.event
@@ -68,17 +78,6 @@ def ircDaemonRoutine2():
       ircclient.send(channel, int_cmd)
       open('irc.syn', 'w').write('nul')
 
-
-async def disDaemonRoutine():
-  print('discord daemon running')
-  global client
-  homechannel = client.get_channel(772960791674355762)
-  while True:
-    send_msg_todiscord = open('dis.syn').read()
-    if not send_msg_todiscord == 'nul':
-      print(send_msg_todiscord)
-      yield homechannel.send(open('dis.syn').read())
-      open('dis.syn', 'w').write('nul')
 
 
 
