@@ -64,6 +64,16 @@ def ircDaemonRoutine():
         if fullmsg.split(' ')[1] == nickname:
           print('sending message from ' + user + ' to #general.')
           open('dis.syn', 'w').write(' '.join(fullmsg.split(' ')[2:]))
+      
+      elif cmd == 'rqst':
+        if fullmsg.split(' ')[1] == nickname:
+          rqst_data = ' '.join(fullmsg.split(' ')[2:])
+          print('recieved request from ' + user + ' for ' + rqst_data + '.')
+        
+          if rqst_data == 'ack':
+            ircclient.send('give ' + user + ' ack')
+          else:
+            ircclient.send('fail ' + user + ' 0:RQST_NOT_RECOGNIZED')
     
 
 def ircDaemonRoutine2():
