@@ -33,7 +33,7 @@ def ircDaemonRoutine():
   global ircclient
   global channel
   while True:
-    cmd, user = comms.parsecmd(ircclient.get_text())
+    cmd, user, fullmsg = comms.parsecmd(ircclient.get_text())
     if not cmd == None:
       if cmd == 'ping':
         ircclient.send(channel, 'pong')
