@@ -14,7 +14,17 @@ intents = discord.Intents.all()
 token = os.getenv('token')
 client = discord.Client(intents=intents)
 
+
 ctx = ['', '']
+
+@client.event
+async def on_ready():
+  homechannel = client.get_channel(772960791674355762)
+  while True:
+    send_msg_todiscord = open('dis.syn').read()
+    if not send_msg_todiscord == 'nul':
+      await homechannel.send(send_msg_todiscord)
+      open('dis.syn', 'w').write('nul')
 
 
 @client.event
@@ -32,6 +42,7 @@ async def on_message(msg):
 def ircDaemonRoutine():
   global ircclient
   global channel
+  global nickname
   while True:
     cmd, user, fullmsg = comms.parsecmd(ircclient.get_text())
     if not cmd == None:
@@ -41,6 +52,12 @@ def ircDaemonRoutine():
 
       elif cmd == 'pong':
         print('pong from ' + user + ' recieved.')
+
+      elif cmd == 'send':
+        print(fullmsg)
+        if fullmsg.split(' ')[1] == nickname:
+          print(' '.join(fullmsg.split(' ')[2:]))
+          open('dis.syn', 'w').write(' '.join(fullmsg.split(' ')[2:]))
     
 
 def ircDaemonRoutine2():
