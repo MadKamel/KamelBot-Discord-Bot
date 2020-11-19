@@ -27,7 +27,8 @@ async def on_ready():
   while True:
     send_msg_todiscord = open('dis.syn').read()
     if not send_msg_todiscord == 'nul':
-      await homechannel.send(send_msg_todiscord)
+      print(send_msg_todiscord)
+      await homechannel.send(open('dis.syn').read())
       open('dis.syn', 'w').write('nul')
 
 
