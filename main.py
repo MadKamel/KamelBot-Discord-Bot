@@ -2,6 +2,10 @@
 import discord, os, chat, irc, comms, threading
 os.system('clear')
 
+open('dis.syn', 'w').write('nul')
+open('irc.syn', 'w').write('nul')
+
+
 channel = "#mk-comms"
 server = "irc.freenode.net"
 nickname = "mk-comms-agent01"
