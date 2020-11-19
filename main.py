@@ -8,7 +8,7 @@ open('irc.syn', 'w').write('nul')
 
 channel = "#mk-comms"
 server = "irc.freenode.net"
-nickname = "mk-comms-agent01"
+nickname = "kamelbot-discord"
 
 ircclient = irc.IRC()
 ircclient.connect(server, channel, nickname)
