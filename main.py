@@ -58,9 +58,8 @@ def ircDaemonRoutine():
         print('pong from ' + user + ' recieved.')
 
       elif cmd == 'send':
-        print(fullmsg)
         if fullmsg.split(' ')[1] == nickname:
-          print(' '.join(fullmsg.split(' ')[2:]))
+          print('sending message from ' + user + ' to #general.')
           open('dis.syn', 'w').write(' '.join(fullmsg.split(' ')[2:]))
     
 
