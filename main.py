@@ -31,6 +31,8 @@ async def on_message(msg):
   elif msg.content[0] == '$':
     print(msg.content)
     open('irc.syn', 'w').write(msg.content[1:])
+  else:
+    pass
     
 
 
