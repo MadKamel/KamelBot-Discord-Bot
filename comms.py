@@ -6,4 +6,4 @@ def parsecmd(msg):
     user = spl[0][1:].split('!')[0]
     cmd = spl[3][1:].split('\r\n')[0]
   
-  return cmd, user, ' '.join(spl[2:])
+  return cmd, user, ' '.join(spl[3:])[1:]
