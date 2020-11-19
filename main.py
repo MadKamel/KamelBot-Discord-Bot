@@ -69,8 +69,7 @@ def ircDaemonRoutine2():
   while True:
     int_cmd = open('irc.syn').read()
     if not int_cmd == 'nul':
-      if int_cmd == 'ping':
-        ircclient.send(channel, 'ping')
+      ircclient.send(channel, int_cmd)
       open('irc.syn', 'w').write('nul')
 
 
