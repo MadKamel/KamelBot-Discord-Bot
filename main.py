@@ -23,7 +23,7 @@ ctx = ['', '']
 
 @client.event
 async def on_ready():
-  homechannel = client.get_channel(772960791674355762)
+  homechannel = client.get_channel(776608765150756935)
   while True:
     send_msg_todiscord = open('dis.syn').read()
     if not send_msg_todiscord == 'nul':
@@ -35,6 +35,7 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
+  global ircclient
   global ctx
   if msg.content[:22] == '<@!' + str(client.user.id) + '>':
     ctx = await chat.respond(msg, msg.content[23:], ctx, client)
@@ -42,7 +43,9 @@ async def on_message(msg):
     print(msg.content)
     open('irc.syn', 'w').write(msg.content[1:])
   else:
-    pass
+    subs = open('subscribers.lst').read().split('\n')
+    for i in range(len(subs)):
+      ircclient.send('send ' + subs[i] + ' DiscordMSG: ' + msg.author.name + ' says: ' + msg.content)
     
 
 
