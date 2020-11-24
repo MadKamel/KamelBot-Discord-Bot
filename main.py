@@ -64,6 +64,7 @@ IS_codes = []
 
 IS_codes.append('Invite Link Generated.')
 IS_codes.append('Invite Link Deleted.')
+IS_codes.append('New Member Joined.')
 
 
 
