@@ -21,7 +21,7 @@ async def on_message(msg):
 
 @client.event
 async def on_invite_create(invite):
-  ISLog(0, invite.inviter.mention)
+  await ISLog(0, invite.inviter.mention)
 
 
 
