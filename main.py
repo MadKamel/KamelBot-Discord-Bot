@@ -24,6 +24,11 @@ async def on_invite_create(invite):
   await ISLog(0, invite.inviter.mention)
 
 
+@client.event
+async def on_invite_delete(invite):
+  await ISLog(1)
+
+
 
 
 
@@ -58,13 +63,16 @@ IS_codes = []
 
 
 IS_codes.append('Invite Link Generated.')
+IS_codes.append('Invite Link Deleted.')
 
 
 
-async def ISLog(code, details):
+
+async def ISLog(code, details="Nothing provided."):
   global InfoSecLogs
 
   await InfoSecLogs.send('Attention, @here:\nACTION CODE: **' + str(code) + '**\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details)
   print('\nINCIDENT:\n=======================\n| ACTION CODE: **' + str(code) + '**\n| ACTIVITY: ' + IS_codes[code] + '\n| DETAILS: ' + details + '\n\n')
+
 print('KamelBot going online.')
 client.run(token)
