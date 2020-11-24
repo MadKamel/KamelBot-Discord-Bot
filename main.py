@@ -65,6 +65,6 @@ async def ISLog(code, details):
   global InfoSecLogs
 
   await InfoSecLogs.send('Attention, @here:\nACTION CODE: **' + str(code) + '**\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details)
-  print('INCIDENT:\n=======================\nACTION CODE: **' + str(code) + '**\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details + '\n\n')
+  print('\nINCIDENT:\n=======================\n| ACTION CODE: **' + str(code) + '**\n| ACTIVITY: ' + IS_codes[code] + '\n| DETAILS: ' + details + '\n\n')
 print('KamelBot going online.')
 client.run(token)
