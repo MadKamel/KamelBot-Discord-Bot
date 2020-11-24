@@ -14,11 +14,20 @@ async def on_ready():
   InfoSecLogs = loadchan(780619821720141904)
 
 
+
 @client.event
 async def on_message(msg):
   print('@' + msg.author + ' #' + msg.channel + ' =' + msg.content)
 
-# Code taken from BreenBot.
+
+
+@client.event
+async def on_invite_create(invite):
+  ISLog(0, invite)
+
+
+
+
 
 # Load Channel function
 def loadchan(id): # Loads a channel
@@ -44,7 +53,22 @@ async def setstatus(activity):
   print('Setting status to: ' + activity)
   await client.change_presence(status=discord.Status.online, activity=discord.Game(activity))
 
-# End of code from BreenBot.
+  
+
+# IS Log Types/Severities
+IS_severity = []
+IS_codes = []
+
+
+IS_severity.append('HIGH')
+IS_codes.append('unlimited invite link created')
+
+
+
+async def ISLog(code, details):
+  global InfoSecLogs
+
+  await InfoSecLogs.send('@here\nWARNING: ' + IS_codes[code])
 
 print('KamelBot going online.')
 client.run(token)
