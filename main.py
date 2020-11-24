@@ -23,7 +23,7 @@ async def on_message(msg):
 
 @client.event
 async def on_invite_create(invite):
-  ISLog(0, invite)
+  ISLog(0, invite.inviter.mention)
 
 
 
@@ -61,14 +61,14 @@ IS_codes = []
 
 
 IS_severity.append('HIGH')
-IS_codes.append('unlimited invite link created')
+IS_codes.append('invite link created')
 
 
 
 async def ISLog(code, details):
   global InfoSecLogs
 
-  await InfoSecLogs.send('@here\nWARNING: ' + IS_codes[code])
+  await InfoSecLogs.send('@here\nURGENCY: ' + IS_severity[code] + '\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details)
 
 print('KamelBot going online.')
 client.run(token)
