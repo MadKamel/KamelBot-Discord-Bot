@@ -54,19 +54,17 @@ async def setstatus(activity):
   
 
 # IS Log Types/Severities
-IS_severity = []
 IS_codes = []
 
 
-IS_severity.append('HIGH')
-IS_codes.append('invite link created')
+IS_codes.append('Invite Link Generated.')
 
 
 
 async def ISLog(code, details):
   global InfoSecLogs
 
-  await InfoSecLogs.send('@here\nURGENCY: ' + IS_severity[code] + '\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details)
-  print('URGENCY: ' + IS_severity[code] + '\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details + '\n\n')
+  await InfoSecLogs.send('Attention, @here:\nACTION CODE: **' + str(code) + '**\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details)
+  print('INCIDENT:\n=======================\nACTION CODE: **' + str(code) + '**\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details + '\n\n')
 print('KamelBot going online.')
 client.run(token)
