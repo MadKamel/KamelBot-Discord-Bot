@@ -7,18 +7,16 @@ token = os.getenv('token')
 client = discord.Client(intents=intents)
 
 
+
 @client.event
 async def on_ready():
   global InfoSecLogs
-
   InfoSecLogs = loadchan(780619821720141904)
-
 
 
 @client.event
 async def on_message(msg):
-  print('@' + msg.author + ' #' + msg.channel + ' =' + msg.content)
-
+  print('@' + msg.author.name + ' #' + msg.channel + ' =' + msg.content)
 
 
 @client.event
