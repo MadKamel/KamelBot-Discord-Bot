@@ -16,7 +16,7 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
-  print('@' + msg.author.name + ' #' + msg.channel + ' =' + msg.content)
+  print('@' + msg.author.name + ' #' + msg.channel.name + ' =' + msg.content)
 
 
 @client.event
@@ -67,6 +67,6 @@ async def ISLog(code, details):
   global InfoSecLogs
 
   await InfoSecLogs.send('@here\nURGENCY: ' + IS_severity[code] + '\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details)
-
+  print('URGENCY: ' + IS_severity[code] + '\nACTIVITY: ' + IS_codes[code] + '\nDETAILS: ' + details + '\n\n')
 print('KamelBot going online.')
 client.run(token)
