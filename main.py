@@ -16,7 +16,7 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
-  print('@' + msg.author.name + ' #' + msg.channel.name + ' =' + msg.content)
+  print('\nINCOMING:================\n@ ' + msg.author.name + '\n# ' + msg.channel.name + '\n= ' + msg.content + '\n========================\n')
 
 
 @client.event
