@@ -10,7 +10,7 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_message(msg):
-  print(msg.content)
+  print('@' + msg.author + ' #' + msg.channel + ' =' + msg.content)
 
 
 
